@@ -1,5 +1,7 @@
-- name: Add the user 'test' a primary group of 'root'
-  user:
-    name: test
-    uid: 1040
-    group: root
+- hosts: all
+  tasks:
+    - name: New user
+      user:
+        name: test
+        comment: It's test user
+        group: root
