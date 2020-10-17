@@ -1,11 +1,11 @@
-FROM ubuntu:18.04
+
+FROM python:2.7
 
 LABEL maintainer="il.lenskii@gmail.com"
 
 RUN apt-get update && apt-get install -y openssh-server
-#RUN apt-get install -y git
-#RUN apt-get install -y nano
-#RUN apt-get install python2.7.12 python-apt
+RUN apt-get install -y git
+RUN apt-get install -y nano
 
 RUN mkdir /var/run/sshd
 
@@ -13,10 +13,15 @@ RUN useradd -rm -d /home/user -s /bin/bash -g root -G sudo -u 1001 user
 RUN usermod -aG sudo user
 
 RUN mkdir -p /home/user/.ssh
-RUN mkdir -p /home/root/.ssh
+RUN chmod 700 /home/user/.ssh
 
-COPY ./.ssh/id_rsa.pub /home/user/.ssh/
-COPY ./.ssh/id_rsa.pub /home/root/.ssh/
+#RUN mkdir -p /home/root/.ssh
+#RUN chmod 700 /home/root/.ssh
+
+COPY ./.ssh/id_rsa.pub /home/user/.ssh/authorized_keys
+#COPY ./.ssh/id_rsa.pub /home/root/.ssh/authorized_keys
+
+RUN chown -R user:root /home/user/
 
 RUN echo 'user:1' | chpasswd
 RUN echo 'root:1' | chpasswd
