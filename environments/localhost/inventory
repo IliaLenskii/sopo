@@ -1,2 +1,2 @@
 [ub18]
-u1 ansible_connection=ssh ansible_host=172.17.0.3 ansible_user=root
+u1 ansible_connection=ssh ansible_host=172.17.0.3 ansible_user=user
