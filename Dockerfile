@@ -1,5 +1,7 @@
 
-FROM python:2.7
+FROM ubuntu:xenial
+#FROM ubuntu:18.04
+
 
 LABEL maintainer="il.lenskii@gmail.com"
 
