@@ -1,0 +1,5 @@
+- name: Add the user 'test' a primary group of 'root'
+  user:
+    name: test
+    uid: 1040
+    group: root
