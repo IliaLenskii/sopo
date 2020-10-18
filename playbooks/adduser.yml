@@ -6,6 +6,5 @@
     - name: New user
       user:
         name: test
-        password: '$6$F4NWXRFtSdCi8$DsB5vvMJYusQhSbvGXrYDXL6Xj37MUuqFCd4dGXdKd6NyxT3lpdELN07/Kpo7$'
         comment: It's test user
         groups: sudo
