@@ -18,7 +18,7 @@ RUN usermod -aG sudo user
 RUN mkdir -p /home/user/.ssh
 RUN chmod 700 /home/user/.ssh
 
-COPY ./../.ssh/id_rsa.pub /home/user/.ssh/authorized_keys
+COPY ./.ssh/id_rsa.pub /home/user/.ssh/authorized_keys
 
 RUN chown -R user:root /home/user/
 
