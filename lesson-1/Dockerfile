@@ -26,6 +26,10 @@ RUN echo 'user:1' | chpasswd
 
 RUN git clone https://github.com/IliaLenskii/sopo.git
 
+#WORKDIR sopo
+#RUN ansible-galaxy install 
+#WORKDIR ../
+
 RUN sed -i 's/^#\?PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 
 # SSH login fix. Otherwise user is kicked off after login
