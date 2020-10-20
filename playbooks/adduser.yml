@@ -1,10 +1,13 @@
-- hosts: all
+---
+- hosts: xenial
+  vars_files:
+    - [ "../vars/users.yml" ]
   become: true
   become_method: sudo
   remote_user: user
   tasks:
     - name: New user
       user:
-        name: test
+        name: "{{ user_sudo }}"
         comment: It's test user
         groups: sudo
