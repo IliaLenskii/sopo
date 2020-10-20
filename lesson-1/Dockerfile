@@ -8,7 +8,7 @@ RUN apt-get install -y nano
 RUN apt-get install -y sudo
 RUN apt-get install -y git
 RUN apt-get install -y python-pip
-RUN apt-get install -y ansible==2.9.12
+RUN apt-get install -y ansible
 
 RUN mkdir /var/run/sshd
 
@@ -18,11 +18,13 @@ RUN usermod -aG sudo user
 RUN mkdir -p /home/user/.ssh
 RUN chmod 700 /home/user/.ssh
 
-COPY ./.ssh/id_rsa.pub /home/user/.ssh/authorized_keys
+COPY ./../.ssh/id_rsa.pub /home/user/.ssh/authorized_keys
 
 RUN chown -R user:root /home/user/
 
 RUN echo 'user:1' | chpasswd
+
+RUN git clone https://github.com/IliaLenskii/sopo.git
 
 RUN sed -i 's/^#\?PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 
