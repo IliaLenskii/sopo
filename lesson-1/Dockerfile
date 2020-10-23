@@ -21,7 +21,8 @@ RUN chmod 700 /home/user/.ssh
 COPY ./.ssh/id_rsa.pub /home/user/.ssh/authorized_keys
 
 RUN mkdir -p /home/user/sopo
-COPY /home/user/sopo /home/user/sopo
+WORKDIR /home/user/sopo
+COPY *.* sopo/
 
 RUN chown -R user:root /home/user/
 
