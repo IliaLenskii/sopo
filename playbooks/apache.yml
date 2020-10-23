@@ -3,8 +3,9 @@
   become: true
   become_method: sudo
   tasks:
-    - name: install apache2
+    - name: Install apache2
       apt: name=apache2 update_cache=yes state=latest
-  handlers:
-    - name: restart apache2
-      service: name=apache2 state=restarted
+    - name: Verify that the web service is running
+      command: service apache2 start
+     - name: Apache is:
+      command: service apache2 status
