@@ -20,9 +20,8 @@ RUN chmod 700 /home/user/.ssh
 
 COPY ./.ssh/id_rsa.pub /home/user/.ssh/authorized_keys
 
-RUN mkdir -p /home/user/sopo
-WORKDIR /home/user/sopo
-COPY *.* sopo/
+WORKDIR /home/user
+RUN git clone https://github.com/IliaLenskii/sopo.git && cd sopo && git checkout
 
 RUN chown -R user:root /home/user/
 
