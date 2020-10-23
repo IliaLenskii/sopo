@@ -20,6 +20,9 @@ RUN chmod 700 /home/user/.ssh
 
 COPY ./.ssh/id_rsa.pub /home/user/.ssh/authorized_keys
 
+RUN mkdir -p /home/user/sopo
+COPY /home/user/sopo /home/user/sopo
+
 RUN chown -R user:root /home/user/
 
 RUN echo 'user:1' | chpasswd
