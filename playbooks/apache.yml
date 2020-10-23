@@ -7,5 +7,5 @@
       apt: name=apache2 update_cache=yes state=latest
     - name: Verify that the web service is running
       command: service apache2 start
-     - name: Apache is:
+    - name: Apache is
       command: service apache2 status
