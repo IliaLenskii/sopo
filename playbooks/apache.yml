@@ -5,5 +5,5 @@
   tasks:
     - name: Install apache2
       apt: name=apache2 update_cache=yes state=latest
-      notify:
-        - start apache2
+    - name: Verify that the web service is running
+      command: service apache2 start
