@@ -7,6 +7,14 @@ RUN apt-get install -y openssh-server
 RUN apt-get install -y nano
 RUN apt-get install -y sudo
 RUN apt-get install -y git
+RUN apt-get install -y curl
+
+RUN curl -L --output /usr/local/bin/gitlab-runner https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-$
+RUN chmod +x /usr/local/bin/gitlab-runner
+RUN useradd --comment 'GitLab Runner' --create-home gitlab-runner --shell /bin/bash
+
+RUN gitlab-runner install --user=gitlab-runner --working-directory=/home/gitlab-runner
+
 
 RUN mkdir /var/run/sshd
 
@@ -34,5 +42,5 @@ ENV NOTVISIBLE="in users profile"
 RUN echo "export VISIBLE=now" >> /etc/profile
 
 EXPOSE 22
-EXPOSE 80
+
 CMD ["/usr/sbin/sshd", "-D"]
