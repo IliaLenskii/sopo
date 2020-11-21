@@ -3,8 +3,6 @@ FROM gitlab/gitlab-ee:latest
 LABEL maintainer="il.lenskii@gmail.com"
 
 RUN apt-get update
-RUN apt-get install -y openssh-server
-RUN apt-get install -y sudo
 RUN apt-get install -y git
 
 RUN mkdir /var/run/sshd
@@ -34,4 +32,4 @@ RUN echo "export VISIBLE=now" >> /etc/profile
 
 EXPOSE 22
 EXPOSE 80
-CMD ["/usr/sbin/sshd", "-D"]
+EXPOSE 443
